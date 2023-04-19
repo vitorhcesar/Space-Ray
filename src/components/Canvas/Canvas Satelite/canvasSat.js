@@ -27,7 +27,6 @@ function Satelite(){
 const CanvasSatelite = () => {
     return (
         <Canvas shadows camera={{position:[30, 45, 45],fov: 50}}>
-            <hemisphereLight penumbra={1} castShadow intensity={.3} />
             <pointLight position={[20, 15, 10]} angle={0.3} intensity={1.5} castShadow/>
             <Suspense fallback={<CanvasLoader />}>
                 <Satelite />

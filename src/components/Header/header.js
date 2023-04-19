@@ -1,16 +1,23 @@
 import React from 'react'
 
 const Header = () => {
-  return (
-    <header>
-        <h1 className='logo'>space <b>ray</b> 🌎</h1>
-        <nav>
-            <button>Sobre o projeto</button>
-            <button>Como funciona</button>
-            <button>Contato</button>
-        </nav>
-    </header>
-  )
+    const handleClickScroll = (id) => {
+        let element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    return (
+        <header>
+            <h1 className='logo'>space <b>ray</b> 🌎</h1>
+            <nav>
+                <button onClick={() => handleClickScroll('hero')}>Sobre o projeto</button>
+                <button onClick={() => handleClickScroll('section-1')}>Como funciona</button>
+                <button>Contato</button>
+            </nav>
+        </header>
+    )
 }
 
 export default Header

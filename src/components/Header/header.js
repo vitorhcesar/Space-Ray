@@ -14,7 +14,7 @@ const Header = () => {
             <nav>
                 <button onClick={() => handleClickScroll('hero')}>Sobre o projeto</button>
                 <button onClick={() => handleClickScroll('section-1')}>Como funciona</button>
-                <button>Contato</button>
+                <button onClick={() => handleClickScroll('contato')}>Contato</button>
             </nav>
         </header>
     )

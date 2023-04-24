@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random';
 import CanvasLoader from '../Canvas Loader/canvasLoader';
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 
 function Stars(props) {
     const ref = useRef()
@@ -27,6 +28,12 @@ const Background = () => {
                 <Suspense fallback={<CanvasLoader />}>
                     <Stars />
                 </Suspense>
+                <EffectComposer>
+                    <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={.2} height={480} />
+                    <Bloom luminanceThreshold={.2} luminanceSmoothing={.5} height={300} />
+                    <Noise opacity={.2} />
+                    <Vignette eskil={false} offset={.3  } darkness={1.5} />
+                </EffectComposer>
             </Canvas>
         </div>
     );

@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars, Html, useGLTF } from '@react-three/drei';
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 
 function Earth(){
     const earth = useGLTF('../lowpoly_earth/scene.gltf')
@@ -31,6 +32,10 @@ const CanvasOne = () => {
             <hemisphereLight intensity={.5} />
             <pointLight position={[10, 15, 10]} angle={0.3} intensity={1.5} />
             <Earth />
+            <EffectComposer>
+                <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={.2} height={480} />
+                <Bloom luminanceThreshold={.4} luminanceSmoothing={0.3} height={300} />
+            </EffectComposer>
         </Canvas>
     </div>
   );

@@ -3,6 +3,8 @@ import { Suspense, useRef } from "react"
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html, useGLTF } from '@react-three/drei';
 import CanvasLoader from "../Canvas Loader/canvasLoader";
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
+
 
 function Satelite(){
     const satelite = useGLTF('../low_poly_satellite/scene.gltf')
@@ -31,6 +33,11 @@ const CanvasSatelite = () => {
             <Suspense fallback={<CanvasLoader />}>
                 <Satelite />
             </Suspense>
+            <EffectComposer>
+                <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={.2} height={480} />
+                <Bloom luminanceThreshold={.5} luminanceSmoothing={.5} height={300} />
+                <Vignette eskil={false} offset={.1} darkness={1.5} />
+            </EffectComposer>
         </Canvas>
     );
 };
